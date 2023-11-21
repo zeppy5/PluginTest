@@ -1,0 +1,10 @@
+name: RGBPluginTest
+version: '${project.version}'
+main: de.zeppy5.rgbplugintest.RGBPluginTest
+api-version: '1.20'
+commands:
+  info:
+    description: Lists information from the API.
+    permission: api.info
+    permission-message: Insufficient permission
+
