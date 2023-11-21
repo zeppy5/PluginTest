@@ -24,6 +24,8 @@ public final class RGBPluginTest extends JavaPlugin {
 
         int code;
 
+        System.out.println("TEST");
+
         try {
             assert uri != null;
             URL url = new URL(uri);
