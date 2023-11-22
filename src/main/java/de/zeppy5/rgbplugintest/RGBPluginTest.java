@@ -1,6 +1,7 @@
 package de.zeppy5.rgbplugintest;
 
 import de.zeppy5.rgbplugintest.commands.InfoCommand;
+import de.zeppy5.rgbplugintest.listeners.AuthListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -42,6 +43,8 @@ public final class RGBPluginTest extends JavaPlugin {
 
 
         Objects.requireNonNull(getCommand("info")).setExecutor(new InfoCommand());
+
+        Bukkit.getPluginManager().registerEvents(new AuthListener(), this);
 
     }
 
