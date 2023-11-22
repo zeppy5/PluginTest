@@ -26,7 +26,7 @@ public final class RGBPluginTest extends JavaPlugin {
 
         try {
             assert uri != null;
-            URL url = new URL(uri);
+            URL url = new URL(uri + "/player");
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();

@@ -15,6 +15,7 @@ public class InfoCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (args.length != 1) {
+            sender.sendMessage("Use: /info [Player]");
             return true;
         }
 

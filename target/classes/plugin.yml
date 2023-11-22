@@ -7,4 +7,3 @@ commands:
     description: Lists information from the API.
     permission: api.info
     permission-message: Insufficient permission
-
