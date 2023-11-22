@@ -1,29 +1,28 @@
 package de.zeppy5.rgbplugintest.commands;
 
 import de.zeppy5.rgbplugintest.RGBPluginTest;
-import de.zeppy5.rgbplugintest.connection.HttpConnection;
+import de.zeppy5.rgbplugintest.util.HttpConnection;
+import de.zeppy5.rgbplugintest.util.ServerPlayer;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-import java.util.Iterator;
+import java.util.Objects;
 
 public class InfoCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        JSONArray array = HttpConnection.getJSONArray(RGBPluginTest.getUri());
-        for (int i = 0; i < array.length(); i++) {
-            JSONObject o = array.getJSONObject(i);
-            Iterator<String> keys = o.keys();
-
-            while(keys.hasNext()) {
-                String key = keys.next();
-                sender.sendMessage("KEY: " + key + "   VALUE: " + o.get(key));
-            }
+        if (args.length != 1) {
+            return true;
         }
+
+        ServerPlayer player = HttpConnection.getServerPlayer(RGBPluginTest.getUri()
+                + "/player?"
+                + Objects.requireNonNull(Bukkit.getPlayer(args[0])).getUniqueId());
+
+        sender.sendMessage("uuid: " + player.getUuid() + " auth: " + player.getAuth(), " roles: " + player.getRoles());
 
         return false;
     }

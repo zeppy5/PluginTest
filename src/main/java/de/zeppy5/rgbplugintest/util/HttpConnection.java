@@ -1,8 +1,7 @@
-package de.zeppy5.rgbplugintest.connection;
+package de.zeppy5.rgbplugintest.util;
 
+import com.google.gson.Gson;
 import org.bukkit.Bukkit;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -29,12 +28,8 @@ public class HttpConnection {
         return response.body();
     }
 
-    public static JSONArray getJSONArray(String uri) {
-        return new JSONArray(getAPI(uri));
-    }
-
-    public static JSONObject getJSONObject(String uri) {
-        return new JSONObject(getAPI(uri));
+    public static ServerPlayer getServerPlayer(String uri) {
+        return new Gson().fromJson(getAPI(uri), ServerPlayer.class);
     }
 
 }
