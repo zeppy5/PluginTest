@@ -20,7 +20,7 @@ public class InfoCommand implements CommandExecutor {
         }
 
         ServerPlayer player = HttpConnection.getServerPlayer(RGBPluginTest.getUri()
-                + "/player?"
+                + "/player?uuid="
                 + Objects.requireNonNull(Bukkit.getPlayer(args[0])).getUniqueId());
 
         sender.sendMessage("uuid: " + player.getUuid() + " auth: " + player.getAuth(), " roles: " + player.getRoles());

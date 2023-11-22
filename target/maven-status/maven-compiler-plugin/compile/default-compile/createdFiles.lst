@@ -2,3 +2,4 @@ de\zeppy5\rgbplugintest\util\HttpConnection.class
 de\zeppy5\rgbplugintest\commands\InfoCommand.class
 de\zeppy5\rgbplugintest\RGBPluginTest.class
 de\zeppy5\rgbplugintest\util\ServerPlayer.class
+de\zeppy5\rgbplugintest\listeners\AuthListener.class
