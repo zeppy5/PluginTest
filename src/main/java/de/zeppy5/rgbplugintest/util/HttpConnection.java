@@ -1,12 +1,16 @@
 package de.zeppy5.rgbplugintest.util;
 
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import org.bukkit.Bukkit;
 
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 
@@ -30,6 +34,11 @@ public class HttpConnection {
 
     public static ServerPlayer getServerPlayer(String uri) {
         return new Gson().fromJson(getAPI(uri), ServerPlayer.class);
+    }
+
+    public static List<Role> getRoles(String uri) {
+        Type type =  new TypeToken<ArrayList<Role>>(){}.getType();
+        return new Gson().fromJson(getAPI(uri), type);
     }
 
 }
