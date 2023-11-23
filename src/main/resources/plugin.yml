@@ -6,4 +6,6 @@ commands:
   info:
     description: Lists information from the API.
     permission: api.info
-    permission-message: Insufficient permission
+  reloadapi:
+    description: Reloads the information from the API.
+    permission: api.reload

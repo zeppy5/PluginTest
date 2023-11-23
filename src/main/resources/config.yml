@@ -1,2 +1,4 @@
-uri: 'http://localhost'
+uri: 'http://localhost:8080'
 notauthkickmessage: '&cDu bist nicht berechtigt diesen Server zu betreten!'
+joinmessage: '&aSpieler %prefix &6%player &ahat den Server betreten!'
+quitmessage: '&aSpieler %prefix &6%player &ahat den Server verlassen!'

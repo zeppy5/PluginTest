@@ -8,6 +8,8 @@ public class Role {
     String prefix;
     List<String> permissions;
 
+    int priority;
+
     public String getName() {
         return name;
     }
@@ -18,5 +20,9 @@ public class Role {
 
     public List<String> getPermissions() {
         return permissions;
+    }
+
+    public int getPriority() {
+        return priority;
     }
 }
