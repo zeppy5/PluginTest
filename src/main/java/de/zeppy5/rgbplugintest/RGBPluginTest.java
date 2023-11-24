@@ -3,6 +3,8 @@ package de.zeppy5.rgbplugintest;
 import de.zeppy5.rgbplugintest.commands.InfoCommand;
 import de.zeppy5.rgbplugintest.commands.ReloadCommand;
 import de.zeppy5.rgbplugintest.listeners.AuthListener;
+import de.zeppy5.rgbplugintest.playerlist.PlayerListListener;
+import de.zeppy5.rgbplugintest.playerlist.PlayerListManager;
 import de.zeppy5.rgbplugintest.util.HttpConnection;
 import de.zeppy5.rgbplugintest.util.Role;
 import de.zeppy5.rgbplugintest.util.ServerPlayer;
@@ -22,6 +24,8 @@ public final class RGBPluginTest extends JavaPlugin {
 
     private static RGBPluginTest instance;
 
+    private PlayerListManager playerListManager;
+
     private static String uri;
 
     private static HashMap<String, Role> roleMap;
@@ -30,6 +34,8 @@ public final class RGBPluginTest extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+
+        playerListManager = new PlayerListManager();
 
         saveDefaultConfig();
 
@@ -62,6 +68,7 @@ public final class RGBPluginTest extends JavaPlugin {
         Objects.requireNonNull(getCommand("reloadapi")).setExecutor(new ReloadCommand());
 
         Bukkit.getPluginManager().registerEvents(new AuthListener(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerListListener(), this);
 
     }
 
@@ -117,15 +124,27 @@ public final class RGBPluginTest extends JavaPlugin {
     public static Role getRoleHighestPriority(List<Role> roles) {
         Role highestRole = null;
         for (Role role : roles) {
-            if (role != null && (highestRole == null ||  role.getPriority() > highestRole.getPriority())) {
+            if (role != null && (highestRole == null ||  Integer.parseInt(role.getPriority()) < Integer.parseInt(highestRole.getPriority()))) {
                 highestRole = role;
             }
         }
         return highestRole;
     }
 
+    public static List<String> getPlayerPermissions(ServerPlayer player) {
+        List<String> permissions = new ArrayList<>();
+        for (Role role : getPlayerRoles(player)) {
+            permissions.addAll(role.getPermissions());
+        }
+        return permissions;
+    }
+
     public static RGBPluginTest getInstance() {
         return instance;
+    }
+
+    public PlayerListManager getPlayerListManager() {
+        return playerListManager;
     }
 
     public static String getUri() {

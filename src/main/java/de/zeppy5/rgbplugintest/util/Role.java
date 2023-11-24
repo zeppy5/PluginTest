@@ -8,7 +8,7 @@ public class Role {
     String prefix;
     List<String> permissions;
 
-    int priority;
+    String priority;
 
     public String getName() {
         return name;
@@ -22,7 +22,7 @@ public class Role {
         return permissions;
     }
 
-    public int getPriority() {
+    public String getPriority() {
         return priority;
     }
 }

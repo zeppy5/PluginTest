@@ -12,6 +12,7 @@ public class ReloadCommand implements CommandExecutor {
 
         RGBPluginTest.setRoleMap();
         RGBPluginTest.setPlayerMap();
+        RGBPluginTest.getInstance().getPlayerListManager().setAllTeams();
 
         sender.sendMessage(ChatColor.GREEN + "Reloaded API info");
 

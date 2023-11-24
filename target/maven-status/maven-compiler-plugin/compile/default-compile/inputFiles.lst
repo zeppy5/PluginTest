@@ -1,6 +1,10 @@
 C:\Users\Carlo\IdeaProjects\RGBPluginTest\src\main\java\de\zeppy5\rgbplugintest\listeners\AuthListener.java
 C:\Users\Carlo\IdeaProjects\RGBPluginTest\src\main\java\de\zeppy5\rgbplugintest\RGBPluginTest.java
 C:\Users\Carlo\IdeaProjects\RGBPluginTest\src\main\java\de\zeppy5\rgbplugintest\util\HttpConnection.java
+C:\Users\Carlo\IdeaProjects\RGBPluginTest\src\main\java\de\zeppy5\rgbplugintest\commands\ReloadCommand.java
+C:\Users\Carlo\IdeaProjects\RGBPluginTest\src\main\java\de\zeppy5\rgbplugintest\playerlist\PlayerListManager.java
+C:\Users\Carlo\IdeaProjects\RGBPluginTest\src\main\java\de\zeppy5\rgbplugintest\playerlist\PlayerListListener.java
 C:\Users\Carlo\IdeaProjects\RGBPluginTest\src\main\java\de\zeppy5\rgbplugintest\util\Role.java
 C:\Users\Carlo\IdeaProjects\RGBPluginTest\src\main\java\de\zeppy5\rgbplugintest\util\ServerPlayer.java
+C:\Users\Carlo\IdeaProjects\RGBPluginTest\src\main\java\de\zeppy5\rgbplugintest\permission\CustomPermissableBase.java
 C:\Users\Carlo\IdeaProjects\RGBPluginTest\src\main\java\de\zeppy5\rgbplugintest\commands\InfoCommand.java
