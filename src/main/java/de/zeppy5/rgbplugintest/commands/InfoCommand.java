@@ -7,10 +7,13 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class InfoCommand implements CommandExecutor {
+public class InfoCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
@@ -19,12 +22,29 @@ public class InfoCommand implements CommandExecutor {
             return true;
         }
 
-        ServerPlayer player = HttpConnection.getServerPlayer(RGBPluginTest.getUri()
-                + "/player?uuid="
-                + Objects.requireNonNull(Bukkit.getPlayer(args[0])).getUniqueId());
+        ServerPlayer player = HttpConnection.getServerPlayer(String.valueOf(Objects.requireNonNull(Bukkit.getPlayer(args[0])).getUniqueId()));
 
         sender.sendMessage("uuid: " + player.getUuid() + " auth: " + player.getAuth(), " roles: " + player.getRoles());
 
         return false;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        List<String> list = new ArrayList<>();
+
+        if (!sender.hasPermission("api.info")) {
+            return null;
+        }
+
+        if (args.length == 0) {
+            return list;
+        }
+
+        if (args.length == 1) {
+            Bukkit.getOnlinePlayers().forEach(player -> list.add(player.getDisplayName()));
+        }
+
+        return null;
     }
 }

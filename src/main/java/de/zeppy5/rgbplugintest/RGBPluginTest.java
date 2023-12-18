@@ -48,7 +48,7 @@ public final class RGBPluginTest extends JavaPlugin {
 
         try {
             assert uri != null;
-            URL url = new URL(uri + "/player");
+            URL url = new URL(uri + "/roles");
             HttpURLConnection connection = (HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
@@ -86,7 +86,7 @@ public final class RGBPluginTest extends JavaPlugin {
             roleMap.clear();
         }
 
-        List<Role> roleList = HttpConnection.getRoles(uri + "/roles");
+        List<Role> roleList = HttpConnection.getRoles();
 
         for (Role role : roleList) {
             String name = role.getName();
@@ -100,14 +100,14 @@ public final class RGBPluginTest extends JavaPlugin {
         }
 
         for (Player player : Bukkit.getOnlinePlayers()) {
-            ServerPlayer serverPlayer = HttpConnection.getServerPlayer(uri + "/player?uuid=" + player.getUniqueId());
+            ServerPlayer serverPlayer = HttpConnection.getServerPlayer(String.valueOf(player.getUniqueId()));
             playerMap.put(serverPlayer.getUuid(), serverPlayer);
         }
     }
 
     public static ServerPlayer getPlayer(String uuid) {
         if (!playerMap.containsKey(uuid)) {
-            ServerPlayer player = HttpConnection.getServerPlayer(uri + "/player?uuid=" + uuid);
+            ServerPlayer player = HttpConnection.getServerPlayer(uuid);
             playerMap.put(player.getUuid(), player);
         }
         return playerMap.get(uuid);
