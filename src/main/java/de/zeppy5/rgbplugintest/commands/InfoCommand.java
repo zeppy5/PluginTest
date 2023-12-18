@@ -45,6 +45,15 @@ public class InfoCommand implements CommandExecutor, TabCompleter {
             Bukkit.getOnlinePlayers().forEach(player -> list.add(player.getDisplayName()));
         }
 
-        return null;
+        List<String> completerList = new ArrayList<>();
+        String currentArg = args[args.length - 1].toLowerCase();
+        for (String s : list) {
+            String s1 = s.toLowerCase();
+            if(s1.startsWith(currentArg)) {
+                completerList.add(s);
+            }
+        }
+
+        return completerList;
     }
 }
